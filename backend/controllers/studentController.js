@@ -26,8 +26,8 @@ const getStudent = async (req, res) => {
 // Create student
 const createStudent = async (req, res) => {
     try {
-        const { name, email, course, allowance, expenditure } = req.body;
-        const student = await Student.create({ name, email, course, allowance, expenditure });
+        const { name, email, course, allowance } = req.body;
+        const student = await Student.create({ name, email, course, allowance });
         res.status(201).json(student);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -37,10 +37,10 @@ const createStudent = async (req, res) => {
 // Update student
 const updateStudent = async (req, res) => {
     try {
-        const { name, email, course, allowance, expenditure } = req.body;
+        const { name, email, course, allowance } = req.body;
         const student = await Student.findByIdAndUpdate(
             req.params.id,
-            { name, email, course, allowance, expenditure },
+            { name, email, course, allowance },
             { new: true, runValidators: true }
         );
         if (!student) {
@@ -64,6 +64,11 @@ const deleteStudent = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Calculate the bottom line from weekly allowance & weekly expenses
+const calculateMoney = async (req, res) => {
+
+}
 
 module.exports = {
     getStudents,

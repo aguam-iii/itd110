@@ -9,7 +9,6 @@ const nameInput = document.getElementById('name');
 const emailInput = document.getElementById('email');
 const courseInput = document.getElementById('course');
 const allowanceInput = document.getElementById('allowance');
-const expenditureInput = document.getElementById('expenditure');
 const tbody = document.getElementById('students-tbody');
 const noStudentsMsg = document.getElementById('no-students');
 
@@ -47,7 +46,6 @@ function renderStudents(students) {
             <td>${escapeHtml(student.email)}</td>
             <td>${escapeHtml(student.course)}</td>
             <td>${escapeHtml(student.allowance)}</td>
-            <td>${escapeHtml(student.expenditure)}</td>
             <td>
                 <button class="btn-edit" onclick="editStudent('${student._id}')">Edit</button>
                 <button class="btn-delete" onclick="deleteStudent('${student._id}')">Delete</button>
@@ -70,8 +68,7 @@ async function handleSubmit(e) {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
         course: courseInput.value.trim(),
-        allowance: allowanceInput.value.trim(),
-        expenditure: expenditureInput.value.trim()
+        allowance: allowanceInput.value(),
     };
 
     try {
@@ -106,7 +103,6 @@ async function editStudent(id) {
         emailInput.value = student.email;
         courseInput.value = student.course;
         allowanceInput.value = student.allowance;
-        expenditureInput.value = student.expenditure;
 
         isEditing = true;
         formTitle.textContent = 'Edit Student';
