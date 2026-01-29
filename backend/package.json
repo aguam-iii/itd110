@@ -18,5 +18,10 @@
   "devDependencies": {
     "nodemon": "^3.1.11"
   },
+<<<<<<< HEAD
   "description": ""
+=======
+  "description": "",
+  "type": "commonjs"
+>>>>>>> 7a02aab (Added a function, where it average the weekly allowances of all students)
 }

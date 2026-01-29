@@ -65,15 +65,46 @@ const deleteStudent = async (req, res) => {
     }
 };
 
+<<<<<<< HEAD
 // Calculate the bottom line from weekly allowance & weekly expenses
 const calculateMoney = async (req, res) => {
 
 }
+=======
+// Get average of the weekly allowances of all students
+const getAverageAllowance = async (req, res) => {
+    try{
+        const stats = await Student.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    averageAmount: { $avg: "$allowance" },
+                    totalStudents: { $sum: 1}
+                }
+            }   
+        ]);
+    
+        if (stats.length == 0) {
+            return res.json({ averageAmount: 0, totalStudents: 0 });
+        }
+
+        res.json(stats[0]);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+>>>>>>> 7a02aab (Added a function, where it average the weekly allowances of all students)
 
 module.exports = {
     getStudents,
     getStudent,
     createStudent,
     updateStudent,
+<<<<<<< HEAD
     deleteStudent
+=======
+    deleteStudent,
+    getAverageAllowance
+>>>>>>> 7a02aab (Added a function, where it average the weekly allowances of all students)
 };
