@@ -17,6 +17,16 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Course is required'],
         trim: true
+    },
+    allowance: {
+        type: Float,
+        required: [true, 'Weekly Allowance is required'],
+        trim: true
+    },
+    expenditure: {
+        type: Float,
+        required: [true, 'Weekly Expenditures are required'],
+        trim: true
     }
 }, {
     timestamps: true
